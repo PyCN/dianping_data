@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+#author zhangr
+#thanks to Living
 import scrapy
 from scrapy.contrib.spiders import CrawlSpider
 from scrapy.http import request,Request
