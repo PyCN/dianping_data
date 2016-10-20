@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+#author zhangr
+#thanks to Living
 import scrapy
 from scrapy.contrib.spiders import CrawlSpider
 from scrapy.http import request,Request
@@ -21,15 +23,40 @@ class Food(CrawlSpider):
             average_price = eachFood.xpath('div[2]/div[2]/a[2]/b/text()').extract()
             foodtype = eachFood.xpath('div[2]/div[3]/a[1]/span/text()').extract()
             addr = eachFood.xpath('div[2]/div[3]/a[2]/span/text()').extract()
+            if restaurant:
+                print restaurant[0]
+                item['restaurant'] = restaurant[0]
+            else:
+                item['restaurant'] = None
+            if star:
+                print star[0]
+                item['star'] = star[0]
+            else:
+                item['star'] = None
+            if average_price:
+                print average_price[0]
+                item['average_price'] = average_price[0]
+            else:
+                item['average_price'] = None
+            if foodtype:
+                print foodtype[0]
+                item['foodtype'] = foodtype[0]
+            else:
+                item['foodtype'] = None
+            if addr:
+                print addr[0]
+                item['addr'] = addr[0]
+            else:
+                item['addr'] = None
 
-            item['restaurant'] = restaurant
-            item['star'] = star
-            item['average_price'] = average_price
-            item['foodtype'] = foodtype
-            item['addr'] = addr
             yield item
-        nextpage = selector.xpath('//*[@id="top"]/div[6]/div[3]/div[1]/div[2]/a[11]/@href').extract()
-        print nextpage
+        nextpage = selector.xpath('//*[@id="top"]/div[6]/div[3]/div[1]/div[2]/a/@href').extract()[-1]
+        # nextpage 的标签容易出现变动
+        # //*[@id="top"]/div[6]/div[3]/div[1]/div[2]/a[11] page1
+        # //*[@id="top"]/div[6]/div[3]/div[1]/div[2]/a[12] page2
+        # //*[@id="top"]/div[6]/div[3]/div[1]/div[2]/a[12] page3
         if nextpage:
+            print nextpage,  'this is a *************************next page'
+            # 字符串切片 拼接
             nextpage = nextpage[23:]
-            yield Request(self.url+ nextpage ,callback = self.parse)
+            yield Request(self.url+nextpage, callback=self.parse)

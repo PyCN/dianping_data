@@ -17,12 +17,10 @@ NEWSPIDER_MODULE = 'love_food.spiders'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 USER_AGENT = 'User-Agent:Mozilla/5.0 (Windows; U; Windows NT 6.1; en-us) AppleWebKit/534.50 (KHTML, like Gecko) Version/5.1 Safari/534.50'
-
+COOKIES_ENABLED = False
+DOWNLOAD_DELAY = 3
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
 
-FEED_URI = u'file:///E:/food_data.csv'
+FEED_URI = u'file:///D:/food_data.csv'
 FEED_FORMAT = 'CSV'
-
-
-
