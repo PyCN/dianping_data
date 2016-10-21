@@ -16,11 +16,28 @@ NEWSPIDER_MODULE = 'love_food.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-USER_AGENT = 'User-Agent:Mozilla/5.0 (Windows; U; Windows NT 6.1; en-us) AppleWebKit/534.50 (KHTML, like Gecko) Version/5.1 Safari/534.50'
+
+# USER_AGENT = 'User-Agent:Mozilla/5.0 (Windows; U; Windows NT 6.1; en-us) AppleWebKit/534.50 (KHTML, like Gecko) Version/5.1 Safari/534.50'
 COOKIES_ENABLED = False
 DOWNLOAD_DELAY = 3
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
 
-FEED_URI = u'file:///D:/food_data.csv'
-FEED_FORMAT = 'CSV'
+# 以csv文件进行保存
+# FEED_URI = u'file:///D:/food_data.csv'
+# FEED_FORMAT = 'CSV'
+
+# 随机ua设置
+DOWNLOADER_MIDDLEWARES = {
+    'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None,
+    'love_food.middlewares.RotateUserAgentMiddleware': 400,
+}
+
+# MongoDB设置
+ITEM_PIPELINES = {
+    'love_food.pipelines.LoveFoodPipeline': 300,
+}
+MONGODB_SERVER = "localhost"
+MONGODB_PORT = 27017
+MONGODB_DB = 'mongo'
+MONGODB_COLLECTION = 'dazongdianpin'
