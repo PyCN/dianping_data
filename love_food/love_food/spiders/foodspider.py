@@ -1,18 +1,19 @@
 # -*- coding: utf-8 -*-
 #author zhangr
-#thanks to Living
+#thanks to Lving
 import scrapy
 from scrapy.contrib.spiders import CrawlSpider
-from scrapy.http import request,Request
+from scrapy.http import request, Request
 from scrapy.selector import Selector
 from love_food.items import LoveFoodItem  #引入items中的类
+
 
 class Food(CrawlSpider):
     name = "foodspider"
     redis_key = 'foodspider:start_urls'
     start_urls = ['http://www.dianping.com/search/category/418/10']
+    url = 'http://www.dianping.com/search/category/418/10'
 
-    url = 'http://www.dianping.com/search/category/418/10' #下一页拼接字符串
     def parse(self, response):
         item = LoveFoodItem() #所有的网页数据
         selector = Selector(response)
@@ -56,7 +57,7 @@ class Food(CrawlSpider):
         # //*[@id="top"]/div[6]/div[3]/div[1]/div[2]/a[12] page2
         # //*[@id="top"]/div[6]/div[3]/div[1]/div[2]/a[12] page3
         if nextpage:
-            print nextpage,  'this is a *************************next page'
+            print nextpage,  '*************************next page******************************'
             # 字符串切片 拼接
             nextpage = nextpage[23:]
             yield Request(self.url+nextpage, callback=self.parse)
