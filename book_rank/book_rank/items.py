@@ -4,11 +4,15 @@
 #
 # See documentation in:
 # http://doc.scrapy.org/en/latest/topics/items.html
-
 import scrapy
-
+from scrapy.item import Item,Field
 
 class BookRankItem(scrapy.Item):
-    # define the fields for your item here like:
+    # 定义需要爬取的内容
     # name = scrapy.Field()
-    pass
+    rank = Field()
+    name = Field()
+    author = Field()
+    press = Field()
+    publish_time = Field()
+    view_number = Field()

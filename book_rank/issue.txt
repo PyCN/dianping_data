@@ -1,0 +1,4 @@
+爬取这个页面的数据 http://opac.zjgtsg.com/opac/ranking/bookLoanRank  
+前面代码已经模拟登陆；
+
+问题:xpath在xpathcheck中返回正常；debug返回时空列表
