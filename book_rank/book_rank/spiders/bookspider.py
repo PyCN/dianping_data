@@ -32,17 +32,28 @@ class Book(CrawlSpider):
     def parse(self, response):
         item = BookRankItem()
         selector = Selector(response)
-        Books = selector.xpath('//table[@id="contentTable"]')  #获取页面所有图书信息
+        Books = selector.xpath('//table[@id="contentTable"]/tr')  #获取页面所有图书信息  注：忽略tbody标签，不然入坑
 
         for eachBook in Books:
-            rank = eachBook.xpath('tr[2]/td[1]/text()').extract()
-            name = eachBook.xpath('tr[2]/td[2]/a/text()').extract()
-            author = eachBook.xpath('tr[2]/td[3]/text()').extract()
-            view_number = eachBook.xpath('tr[2]/td[4]/text()').extract()
-
-            item['rank'] = rank
-            item['name'] = name
-            item['author'] = author
-            item['view_number'] = view_number
+            rank = eachBook.xpath('td[1]/text()').extract()
+            name = eachBook.xpath('td[2]/a/text()').extract()    #a标签里面的属性值
+            author = eachBook.xpath('td[3]/text()').extract()
+            press = eachBook.xpath('td[4]/text()').extract()
+            publish_time = eachBook.xpath('td[5]/text()').extract()
+            view_number = eachBook.xpath('td[6]/text()').extract()
+            if(rank and name and author and press and publish_time and view_number): #剔除第一个tr标签的记录
+                item['rank'] = rank
+                item['name'] = name
+                item['author'] = author
+                item['press'] = press
+                item['publish_time'] = publish_time
+                item['view_number'] = view_number
+            else:
+                item['rank'] = None
+                item['name'] = None
+                item['author'] = None
+                item['press'] = None
+                item['publish_time'] = None
+                item['view_number'] = None
 
             yield item
