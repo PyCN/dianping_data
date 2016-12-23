@@ -2,3 +2,6 @@
 前面代码已经模拟登陆；
 
 问题:xpath在xpathcheck中返回正常；debug返回时空列表
+
+
+12/23 去掉tbody,修改xpath 有数据。先上班，晚上回去处理
