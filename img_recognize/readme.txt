@@ -6,3 +6,6 @@
 PIL pytesseract tessseract-ocr
 2.建议在linux系统环境中使用
 3.参考 https://my.oschina.net/jhao104/blog/647326
+
+
+备注:机器学习部分，咱不讨论。具体案列中遇到再做分析。
