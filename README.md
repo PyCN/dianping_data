@@ -5,4 +5,4 @@ python爬虫练习二（book_rank):某地区图书馆模拟登陆<无验证码>�
 
 python爬虫练习三（img_recognize):验证码识别学习(python，PIL)
 
-Python爬虫联系四（anjuke）:爬取安居客上海租房的信息（scrapy,csv）—ip池还在完善中，爬取1300条被封ip
+Python爬虫练习四（anjuke）:爬取安居客上海租房的信息（scrapy,csv）—反爬应对

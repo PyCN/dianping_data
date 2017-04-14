@@ -89,7 +89,8 @@ HTTPCACHE_ENABLED = False
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 # 以csv文件进行保存
-FEED_URI = u'file:/Users/zhangrui/Desktop/anjuke_data.csv'
+#FEED_URI = u'file:/Users/zhangrui/Desktop/anjuke_data.csv'
+FEED_URI = u'file:///E:/anjuke_data.csv'
 FEED_FORMAT = 'CSV'
 
 COOKIES_ENABLED = False
@@ -104,4 +105,5 @@ DOWNLOAD_DELAY = 3
 DOWNLOADER_MIDDLEWARES = {
     'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None,
     'anjuke.middlewares.RotateUserAgentMiddleware': 400,
+
 }
