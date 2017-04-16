@@ -10,7 +10,7 @@ from anjuke.items import AnjukeItem  #引入items中的类
 class Anjuke(CrawlSpider):
     name = "anjuke_spider"
     #allowed_domains = ["sh.zu.anjuke.com"]
-    start_urls = ['https://webcache.googleusercontent.com/search?q=cache:WAkjsokByDsJ:https://sh.zu.anjuke.com/+&cd=1&hl=zh-CN&ct=clnk&gl=cn'] #安居客租房链接地址
+    start_urls = ['google cache url'] #安居客租房链接地址
 
     def parse(self, response):
         item = AnjukeItem() #所有数据
